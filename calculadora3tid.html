@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href=calculadoracss.css>
+ <title>Calculadora</title>
+</head>
+<body>
+    <div class="tudo"><br>
+        <h1 class="h1">CALCULADORA</h1>     
+    </div>
+    <div class="calculadora">
+        <textarea id="maior"></textarea>
+        <br>
+        <p id="finalizado"></p>
+        <br>
+        <table>
+           <tr>
+            <td><button class="botao" onclick="mut('/')"ope>/</button></td>
+            <td><button class="botao" onclick="mut('*')"ope>X</button></td>
+            <td><button class="botao" onclick="apagar()">D</button></td>
+            <td><button class="botao" onclick="mut('%')">%</button></td>
+           </tr>
+            <tr>
+                <td><button class="botao" onclick="clicar('7')"num>7</button></td>
+                <td><button class="botao" onclick="clicar('8')"num>8</button></td>
+                <td><button class="botao" onclick="clicar('9')"num>9</button></td>
+                <td><button class="botao" onclick="mut('-')" ope>-</button></td>
+            </tr>
+            <tr>
+                <td><button class="botao" onclick="clicar('4')"num>4</button></td>
+                <td><button class="botao" onclick="clicar('5')"num>5</button></td>
+                <td><button class="botao" onclick="clicar('6')"num>6</button></td>
+                <td><button class="botao" onclick="mut('+')" ope>+</button></td>
+            </tr>
+            <tr>
+                <td><button class="botao"  onclick="clicar('1')"num>1</button></td>
+                <td><button class="botao"  onclick="clicar('2')"num>2</button></td>
+                <td><button class="botao"  onclick="clicar('3')"num>3</button></td>
+                <td rowspan="2"><button class="botao" style="height: 101px" onclick="calcular('=')"ope>=</button></td>
+            </tr>
+            <tr>
+                <td colspan="3"><button class="zero" style="width: 150px"  onclick="clicar('0')">0</button></td>
+            </tr>
+        </table>
+    </div>
+<script>
+    var resultado;
+    var sub;
+    var numero;
+    var contar = 0;
+    function clicar(x)
+    {
+       numero = document.getElementById('finalizado').innerHTML;
+       sub = document.getElementById('finalizado').innerHTML = numero + x;
+    }
+    function apagar()
+    {
+        document.getElementById('finalizado').innerHTML = "";
+        document.getElementById('maior').innerHTML = "";
+        contar = 0;
+    }
+     function mut(x){
+       const size=100
+       var num = new Array(size)
+       var numero = document.getElementById('maior').innerHTML;
+       document.getElementById('maior').innerHTML = numero + "\n" + sub + "\n" + x;
+       document.getElementById('finalizado').innerHTML = " "; 
+    }
+    function calcular(){
+    if(contar == 0){
+            var numero = document.getElementById('maior').innerHTML;
+            document.getElementById('maior').innerHTML = numero + sub;
+            document.getElementById('finalizado').innerHTML = "";
+            var resultado = document.getElementById('maior').innerHTML;
+            document.getElementById('finalizado').innerHTML = eval(resultado); 
+            contar++
+        }else{
+            alert("Digite uma nova operação!");
+
+        }
+    }
+    </script>
+    
